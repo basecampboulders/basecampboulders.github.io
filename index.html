@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Basecamp Boulders</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #3F82A2;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #D7D0C1;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(73, 70, 29, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .logo {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #49461D;
+            margin-bottom: 10px;
+        }
+        
+        .slogan {
+            font-size: 1.2em;
+            color: #C97040;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        label {
+            font-weight: bold;
+            color: #49461D;
+            font-size: 1.1em;
+        }
+        
+        input, textarea {
+            padding: 15px;
+            border: 2px solid #AEA16F;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            background: rgba(255, 255, 255, 0.9);
+            color: #49461D;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #3F82A2;
+            box-shadow: 0 0 0 3px rgba(63, 130, 162, 0.2);
+            transform: translateY(-2px);
+            background: #ffffff;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .submit-btn {
+            background: #C97040;
+            color: #D7D0C1;
+            border: none;
+            padding: 18px 30px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 20px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(201, 112, 64, 0.4);
+            background: #49461D;
+        }
+        
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+            
+            .logo {
+                font-size: 2em;
+            }
+            
+            .slogan {
+                font-size: 1em;
+            }
+        }
+        
+        .contact-info {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #AEA16F;
+            color: #49461D;
+        }
+        
+        .contact-info p {
+            color: #49461D;
+        }
+        
+        .contact-info strong {
+            color: #C97040;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="logo">Basecamp Boulders</h1>
+            <p class="slogan">Bringing Bouldering to Riyadh</p>
+        </div>
+        
+        <form class="contact-form" action="https://formspree.io/f/mwpbyqwy" method="POST">
+            <input type="hidden" name="_to" value="contact@basecampboulders.com">
+            <input type="hidden" name="_subject" value="New Contact from Basecamp Boulders Website">
+            <input type="hidden" name="_next" value="#thank-you">
+            
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" placeholder="Tell us about your bouldering experience or ask us anything..." required></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+        
+        <div class="contact-info">
+            <p>Ready to start your bouldering journey in Riyadh?</p>
+            <p><strong>contact@basecampboulders.com</strong></p>
+        </div>
+    </div>
+    
+    <script>
+        // Add smooth animations and form handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('.contact-form');
+            const inputs = document.querySelectorAll('input, textarea');
+            
+            // Add focus animations
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.style.transform = 'scale(1.02)';
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.style.transform = 'scale(1)';
+                });
+            });
+            
+            // Form submission handling
+            form.addEventListener('submit', function(e) {
+                const submitBtn = document.querySelector('.submit-btn');
+                submitBtn.innerHTML = 'Sending...';
+                submitBtn.disabled = true;
+            });
+        });
+    </script>
+</body>
+</html>
